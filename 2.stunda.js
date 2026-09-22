@@ -53,7 +53,8 @@ document.body.innerHTML+=iznakums
 console.log(rezultats)
 
 
-
+    // Uzdevums.
+    
     // Uzrakstīt programmu, kas prasa cik bildes izvadīt, un pēc ievades atkārtot <img src=""> kodu
     // Bildes adresei izmantot picsum.photos
     // rezultātu izvadīt ar document.body.innerHTML = '';
