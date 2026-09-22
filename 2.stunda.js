@@ -26,10 +26,10 @@ let krasa = {
 }
 
 
-document.body.style.background = `rgb(${krasa.red},${krasa.green},${krasa.blue})`;
+document.body.style.color = `rgb(${krasa.red},${krasa.green},${krasa.blue})`;
 }
 
-setInterval(krasuMaina,5000)
+setInterval(krasuMaina,1000)
 
 
 
