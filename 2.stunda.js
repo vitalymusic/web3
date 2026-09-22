@@ -58,7 +58,8 @@ console.log(rezultats)
     // Uzrakstīt programmu, kas prasa cik bildes izvadīt, un pēc ievades atkārtot <img src=""> kodu
     // Bildes adresei izmantot picsum.photos
     // rezultātu izvadīt ar document.body.innerHTML = '';
-    // *izmantojot skaitļu ģenerāciju random() pie katras bildes adrese pievienot ID atribūtu ar randoma skaitli no 0-255, ieskatīties picsum.photos
+    // *izmantojot skaitļu ģenerāciju random() pie katras bildes adrese pievienot ID atribūtu ar randoma skaitli no 0-255, 
+    // bildes adrese ar ID: https://picsum.photos/id/1/200/300
 
     let bildesHTML = `<img src="https://picsum.photos/500">`;
 
