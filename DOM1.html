@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .izcelts_teksts{
+            text-decoration: underline;
+            font-weight: bold;
+            background-color: crimson;
+            color:white;
+            padding: 30px;
+        }
+        .paslepts{
+            display: none;
+        }
+
+
+
+    </style>
+
+
+</head>
+<body>
+    <h1>Virsraksts</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, necessitatibus dolore? Necessitatibus reprehenderit enim dicta, amet ipsam a ducimus tempora totam assumenda quaerat repudiandae error corporis ipsum harum commodi temporibus.</p>
+    <div class="output"></div>
+
+    <button id="btn1">Fons</button>
+    <button id="btn2">Teksts</button>
+    <button id="btn3">Noņemt visu</button>
+    <button id="btn4">Pievienot CSS klasi</button>
+    <button id="btn5">Noņemt CSS klasi</button>
+    <button id="btn6">Pārslēgt CSS klasi</button>
+
+
+    <div class="carusel">
+        <img src="" alt="">
+        <div class="buttons">
+            <button>&larr;</button>
+            <button>&rarr;</button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        // 1. Elementu nolasīšana no lapas
+       let virsraksts =  document.querySelector('h1');
+        let outputDiv = document.querySelector('.output');
+        let btn1 = document.querySelector('#btn1');
+        let btn2 = document.querySelector('#btn2');
+        let btn3 = document.querySelector('#btn3');
+        let btn4 = document.querySelector('#btn4');
+        let btn5 = document.querySelector('#btn5');
+        let btn6 = document.querySelector('#btn6');
+
+
+        let carouselImg = document.querySelector('.carusel img');
+        let btns = document.querySelectorAll('.carusel button');
+
+
+
+        // 2. Elementu satura maiņa
+
+        virsraksts.textContent = "Šis teksts ir veidots ar JS";
+        let imgAddress = "https://picsum.photos/500";
+        outputDiv.innerHTML = `<img src="${imgAddress}">`;
+
+        // 3. Notikumu klausītāju pievienošana elementiem
+
+        btn1.onclick = ()=>{
+            virsraksts.textContent = "Ups, kaut kas notika!!!";
+            carouselImg.src=imgAddress;
+        }
+        let fonaBilde = "https://depositphotos-blog.s3.eu-west-1.amazonaws.com/uploads/2017/07/Soothing-nature-backgrounds-2.jpg"
+        // 4. Elementu stila maiņa
+        btn2.onclick = ()=>{
+           virsraksts.style.fontSize = "30pt";
+           virsraksts.style.color = "#EE4B2B";
+            outputDiv.style.border = "2px solid red";
+            document.body.style.backgroundImage = `url(${fonaBilde})`;
+            document.body.style.backgroundSize = "cover";
+        }
+
+         btn3.onclick = ()=>{
+            let allElements = document.querySelectorAll('body *');
+            document.body.style="";
+            for(element of allElements){
+                element.style="";
+            }
+
+
+         }
+
+        //  5. CSS klašu pievienošana / noņemšana / pārslēgšana
+
+
+          btn4.onclick = ()=>{
+            virsraksts.classList.add('izcelts_teksts');
+          }
+
+           btn5.onclick = ()=>{
+            virsraksts.classList.remove('izcelts_teksts');
+          }
+
+           btn6.onclick = ()=>{
+            virsraksts.classList.toggle('izcelts_teksts');
+            outputDiv.classList.toggle('paslepts');
+          }
+
+
+
+
+        //   Bilžu karuselis
+        let bildesNumurs = 0;
+        carouselImg.src=`https://picsum.photos/id/${bildesNumurs}/400`;  
+
+        function nextImage(){
+          bildesNumurs++;
+          carouselImg.src=`https://picsum.photos/id/${bildesNumurs}/400`;  
+        }
+        function previusImage(){
+          bildesNumurs--;
+          carouselImg.src=`https://picsum.photos/id/${bildesNumurs}/400`;  
+        }
+
+        console.log(btns)
+
+        btns[0].onclick = ()=>{
+            previusImage();
+        }
+        btns[1].onclick = ()=>{
+            nextImage();
+        }
+
+
+
+
+        // izveidot jaunu HTML dokumentu tajā ievietot:
+        // h1, h2, h3, p, img, button
+
+
+        // Ar JS, nomainīt h1,h2,h3, teksta saturus.
+        // Ar JS, nomainīt h1,h2,h3, stilus.
+        // Pogai pievienot notikumu onclick un elementam body pārslēgt klasi        .dark_theme kur lapai nomainās tumšs fons un balts teksts
+    </script>
+</body>
+</html>
+
+
