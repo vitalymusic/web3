@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karuselis</title>
 
     <style>
-
-        .vk-carousel{
+        .vk-carousel {
             max-width: 1200px;
             margin: 50px auto;
             position: relative;
         }
 
-        .slide{
+        .slide {
             position: relative;
             display: none;
         }
 
-        .active_slide{
-             display: block;
+        .active_slide {
+            display: block;
+            animation: flip-in-ver-left .5s cubic-bezier(.25, .46, .45, .94) both
         }
 
-        .slide h3{
+        .slide h3 {
             position: absolute;
             z-index: 10;
-            bottom:20px;
-            left:20px;
+            bottom: 20px;
+            left: 20px;
             font-size: 5rem;
-            color:white;
-            margin:0px;
+            color: white;
+            margin: 0px;
             padding: 0px;
             font-family: sans-serif;
-            
+
         }
 
 
@@ -41,26 +42,58 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
-            top:-200px;
+            top: -200px;
         }
 
-        .buttons button{
+        .buttons button {
             background: none;
-            border:none;
-            color:rgb(146, 146, 146);
-            padding:20px;
+            border: none;
+            color: rgb(146, 146, 146);
+            padding: 20px;
             font-size: 3rem;
             cursor: pointer;
 
         }
 
-        .buttons button:hover{
-            color:white;
+        .buttons button:hover {
+            color: white;
         }
 
+        .circle{
+            width: 15px;
+            height: 15px;
+            background-color: black;
+            display: inline-block;
+            border-radius: 50%;
+            cursor: pointer;
+        }
 
+        .circles{
+            display: flex;
+            justify-content: center;
+            gap:10px;
+            position: relative;
+            top:-100px;
+        }
+
+        .flip-in-ver-left {
+            animation: flip-in-ver-left .5s cubic-bezier(.25, .46, .45, .94) both
+        }
+
+        @keyframes flip-in-ver-left {
+            0% {
+                transform: rotateY(80deg);
+                opacity: 0
+            }
+
+            100% {
+                transform: rotateY(0);
+                opacity: 1
+            }
+        }
     </style>
 </head>
+
 <body>
     <h1>Karuselis</h1>
 
@@ -91,5 +124,65 @@
 
         </div>
     </div>
+
+
+
+    <script>
+        let slides = document.querySelectorAll('.slide');
+        let buttons = document.querySelectorAll('.buttons button')
+        let currSlide = 0;
+
+        function showSlide(slideNumber) {
+            for (slide of slides) {
+                slide.classList.remove('active_slide');
+                slides[slideNumber].classList.add('active_slide')
+
+            }
+
+
+        }
+
+        showSlide(currSlide);
+
+        function nextSlide() {
+            currSlide++;
+            if (currSlide > slides.length - 1) {
+                currSlide = 0;
+            }
+            showSlide(currSlide);
+           
+        }
+
+        function prevSlide() {
+            currSlide--;
+            if (currSlide < 0) {
+                currSlide = slides.length - 1
+            }
+            showSlide(currSlide);
+        }
+
+        buttons[0].onclick = prevSlide;
+        buttons[1].onclick = nextSlide;
+
+
+        // Punktu pievienošana
+
+        for(slide of slides){
+            document.querySelector('.circles').innerHTML+=`
+                <span class="circle"></span>
+            `;
+        }
+
+        let circles = document.querySelectorAll('.circle');
+
+        circles.forEach((element,number)=>{
+            element.onclick = ()=>{
+                showSlide(number)
+            }
+        })
+
+
+    </script>
 </body>
+
 </html>
