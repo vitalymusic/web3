@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karuselis</title>
+
+    <style>
+
+        .vk-carousel{
+            max-width: 1200px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .slide{
+            position: relative;
+            display: none;
+        }
+
+        .active_slide{
+             display: block;
+        }
+
+        .slide h3{
+            position: absolute;
+            z-index: 10;
+            bottom:20px;
+            left:20px;
+            font-size: 5rem;
+            color:white;
+            margin:0px;
+            padding: 0px;
+            font-family: sans-serif;
+            
+        }
+
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            top:-200px;
+        }
+
+        .buttons button{
+            background: none;
+            border:none;
+            color:rgb(146, 146, 146);
+            padding:20px;
+            font-size: 3rem;
+            cursor: pointer;
+
+        }
+
+        .buttons button:hover{
+            color:white;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Karuselis</h1>
+
+    <div class="vk-carousel">
+        <div class="carousel-slides">
+            <div class="slide active_slide">
+                <img src="https://picsum.photos/id/5/1200/400" alt="bilde">
+                <h3>Pirmais slaids</h3>
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/id/7/1200/400" alt="bilde">
+                <h3>Otrais slaids</h3>
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/id/9/1200/400" alt="bilde">
+                <h3>Trešais slaids</h3>
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/id/11/1200/400" alt="bilde">
+                <h3>Ceturtais slaids</h3>
+            </div>
+        </div>
+        <div class="buttons">
+            <button>&#129052;</button>
+            <button>&#129054;</button>
+        </div>
+        <div class="circles">
+
+        </div>
+    </div>
+</body>
+</html>

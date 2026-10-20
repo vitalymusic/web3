@@ -13,6 +13,8 @@
             display: flex;
             justify-content: center;
             gap:20px;
+            position: relative;
+            z-index: 10;
 
             button{
                 border:none;
@@ -41,7 +43,15 @@
 
         .active_tab{
              display: flex;
+             z-index: 0;
+             animation:slide-in-top .5s cubic-bezier(.25,.46,.45,.94) both
         }
+
+
+        .slide-in-top{}
+       
+
+        @keyframes slide-in-top{0%{transform:translateY(-1000px);opacity:0}100%{transform:translateY(0);opacity:1}}
 
     </style>
 </head>
@@ -80,6 +90,9 @@
                 for(btn of tabBtns){
                     btn.classList.remove('active_tab_btn');
                 }
+                for(tab of tabs){
+                    tab.classList.remove('active_tab');
+                }
 
                 e.target.classList.add('active_tab_btn');
                 tabID = e.target.dataset.tab;
@@ -88,6 +101,7 @@
             }
         }
 
+        tabBtns[0].click();
 
      </script>
 </body>

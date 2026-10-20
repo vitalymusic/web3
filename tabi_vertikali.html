@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabi</title>
+
+
+    <style>
+        .tabs{
+            display: flex;
+        }
+
+        .tabs_content{
+            width:100%;
+        }
+
+        .tab_buttons{
+            background: #999;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* gap:20px; */
+            position: relative;
+            z-index: 10;
+
+            button{
+                border:none;
+                display: block;
+                cursor: pointer;
+            }
+        }
+
+        .active_tab_btn{
+            background-color: #a20000;
+            color:white;
+        }
+
+        .tab{
+            border: 1px solid #999;
+            padding: 20px;
+           
+            flex-direction: column;
+            justify-content: center;
+            display: none;
+
+            h2,p{
+                text-align: center;
+            }
+        }
+
+        .active_tab{
+             display: flex;
+             z-index: 0;
+             animation:slide-in-top .5s cubic-bezier(.25,.46,.45,.94) both
+        }       
+
+        @keyframes slide-in-top{0%{transform:translateY(-1000px);opacity:0}100%{transform:translateY(0);opacity:1}}
+
+    </style>
+</head>
+<body>
+     <div class="tabs">
+        <div class="tab_buttons">
+            <button data-tab="tab1">Tab1</button>
+            <button data-tab="tab2">Tab2</button>
+            <button data-tab="tab3">Tab3</button>
+        </div>
+        <div class="tabs_content">
+            <div class="tab" id="tab1">
+                <h2>Pirmais</h2>
+                <p>Pirmais teksts</p>
+            </div>
+            <div class="tab" id="tab2">
+                <h2>Otrais</h2>
+                <p>Otrais teksts</p>
+            </div>
+            <div class="tab" id="tab3">
+                <h2>Trešais</h2>
+                <p>Trešais teksts</p>
+            </div>
+        </div>
+
+     </div> 
+     
+     
+
+     <script>
+        let tabBtns = document.querySelectorAll('.tab_buttons button');
+        let tabs = document.querySelectorAll('.tab');
+
+        for(btn of tabBtns){
+            btn.onclick = (e)=>{
+                for(btn of tabBtns){
+                    btn.classList.remove('active_tab_btn');
+                }
+                for(tab of tabs){
+                    tab.classList.remove('active_tab');
+                }
+
+                e.target.classList.add('active_tab_btn');
+                tabID = e.target.dataset.tab;
+                document.querySelector('#'+tabID).classList.add('active_tab');
+
+            }
+        }
+
+        tabBtns[0].click();
+
+     </script>
+</body>
+</html>
